@@ -1,5 +1,5 @@
 
-const Board = ({computerScore, userScore}) => {
+const ScoreBoard = ({computerScore, userScore}) => {
     return <div className='result-board'>
 
 <div className='score-display'>
@@ -16,4 +16,4 @@ const Board = ({computerScore, userScore}) => {
     </div>
 };
 
-export default Board;
+export default ScoreBoard;

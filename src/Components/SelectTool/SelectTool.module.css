@@ -1,0 +1,10 @@
+.toolBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}

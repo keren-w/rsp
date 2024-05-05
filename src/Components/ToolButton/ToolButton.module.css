@@ -1,0 +1,16 @@
+.toolButton {
+    background: none;
+    padding: 25px;
+    border: none;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.toolButton:hover {
+    background: salmon;
+}
+
+.selected {
+    border: 1px solid black;
+}
