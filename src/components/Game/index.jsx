@@ -1,51 +1,56 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { chooseRandomTool, getResults } from './utils';
 import SelectTool from '../SelectTool';
 import styles from './Game.module.css';
+import { GameContext } from '../../common/gameContext';
 
-const Game = ({ onPlay }) => {
+const Game = () => {
     const [userSelection, setUserSelection] = useState(null);
     const [computerSelection, setComputerSelection] = useState(null);
-    const [showProcessing, setShowProcessing] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
     const [winner, setWinner] = useState(null);
-    const [round, setRound] = useState(1);
+    const { updateScores, round, setRound } = useContext(GameContext);
 
     const onUserSelection = (userSelection = null) => {
         setUserSelection(userSelection);
         setComputerSelection(null);
         const computerChoice = chooseRandomTool();
-        setShowProcessing(true);
+        setIsProcessing(true);
 
         if (userSelection) {
             setTimeout(() => {
                 setComputerSelection(computerChoice);
                 const winner = getResults(userSelection, computerChoice);
-                onPlay(winner);
+                updateScores(winner);
                 setWinner(winner);
                 setRound(round => round + 1);
-                setShowProcessing(false);
+                setIsProcessing(false);
             }, 1000);
         }
     }
 
     return (
         <div className={styles.gameWrapper}>
-            <header className={styles.roundTitle}>Round {round}</header>
-            {showProcessing ? <div>calculating...</div> : <div>Please select:</div>}
-            <div className={styles.playBoard}>
-                <SelectTool userSelection={userSelection} setUserSelection={onUserSelection} disabled={showProcessing} />
-            </div>
-            {userSelection && <div>You chose: {userSelection}</div>}
-            {computerSelection && <div>Computer chose: {computerSelection}</div>}
 
-            {!showProcessing && round > 1 && 
-                <div className={styles.gameStatus}>
-                    <div className={styles.result}>
-                        {winner === 'tie' ?
-                            'its a tie' :
-                            <>Winner is <span>{winner.toUpperCase()}</span></>
-                        }
-                    </div>
+            <div>{isProcessing ? 'calculating...' : 'Please select:'}</div>
+
+            <div className={styles.playBoard}>
+                <SelectTool userSelection={isProcessing ? userSelection : null}
+                    setUserSelection={onUserSelection}
+                    disabled={isProcessing} />
+            </div>
+
+            <div>
+                {userSelection && <div>You chose: {userSelection}</div>}
+                {computerSelection && <div>Computer chose: {computerSelection}</div>}
+            </div>
+
+            {!isProcessing && round > 1 &&
+                <div className={styles.result}>
+                    {winner === 'tie' ?
+                        'its a tie' :
+                        <>Winner is <span>{winner?.toUpperCase()}</span></>
+                    }
                 </div>}
         </div>
     )

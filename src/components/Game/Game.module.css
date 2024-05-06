@@ -5,11 +5,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-
-.roundTitle {
-    font-size: 1.5rem;
-    font-weight: bold;
+    text-align: center;
 }
 
 .playBoard {
@@ -18,17 +14,12 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    /* background: tan; */
     width: fit-content;
-}
-
-.gameStatus {
-    line-height: 2rem;
 }
 
 .result {
     border: 1px solid black;
-    
+    line-height: 2rem;
     border-radius: 0.5rem;
     padding: 1rem;
     span {
