@@ -8,9 +8,13 @@
 }
 
 .toolButton:hover {
-    background: salmon;
+    color: salmon;
 }
 
 .selected {
     border: 1px solid black;
+}
+
+.disabled {
+   cursor: progress;
 }

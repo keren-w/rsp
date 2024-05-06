@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import './App.css';
-import Game from './Components/Game';
-import ScoreBoard from './Components/GameHeader';
+import Game from './components/Game';
+import GameHeader from './components/GameHeader';
 
 function App() {
 
-  const [scores, setScores] = useState({userScore: 0, computerScore: 0});
-
-  const {userScore, computerScore} = scores;
+  const [scores, setScores] = useState({user: 0, computer: 0});
   return (
-    <div className="App">
-      <ScoreBoard computerScore={computerScore} userScore={userScore}/>
+    <div>
+      <GameHeader computerScore={scores.computer} userScore={scores.user}/>
       <Game onPlay={winner => setScores(scores => ({...scores, [winner]: scores[winner]+1}))}/>
     </div>
   );

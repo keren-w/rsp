@@ -1,0 +1,38 @@
+.gameWrapper {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.roundTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.playBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* background: tan; */
+    width: fit-content;
+}
+
+.gameStatus {
+    line-height: 2rem;
+}
+
+.result {
+    border: 1px solid black;
+    
+    border-radius: 0.5rem;
+    padding: 1rem;
+    span {
+        font-weight: bold;
+        color: blue;
+    }
+}
