@@ -5,10 +5,10 @@
     height: 100px;
     width: 100px;
     border-radius: 50%;
-}
-
-.toolButton:hover {
-    color: salmon;
+    transition: all 0.3s ease; 
+    &:hover {
+        background-color: var(--main-app-color);
+    }
 }
 
 .selected {
